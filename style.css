@@ -1,0 +1,257 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  position: relative;
+  font-family: "Noto Sans Mono", monospace;
+}
+
+/* 放射漸層背景動畫 */
+body {
+  background: radial-gradient(#ecb235, rgb(68, 230, 176), #1182df);
+  background-size: 100% 100%;
+  animation: gradient 5s ease infinite;
+}
+@keyframes gradient {
+  0% {
+    background-size: 100% 100%;
+    background-position: center;
+  }
+
+  50% {
+    background-size: 200% 200%;
+    background-position: center;
+  }
+
+  100% {
+    background-size: 300% 300%;
+    background-position: center;
+  }
+}
+
+/* 時鐘上下飄移動畫 */
+@keyframes move {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+
+  50% {
+    top: 52%;
+    left: 50%;
+  }
+
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+
+@keyframes swim {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* 年月日 */
+.container {
+  margin: auto;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+#years,
+#date {
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+}
+#date {
+  display: flex;
+}
+#year,
+#month,
+#day {
+  font-size: 80px;
+  margin: 0 20px;
+}
+
+/* 海豚出沒區  */
+.dolphin-area {
+  /* border: 1px solid #000; */
+  width: 430px;
+  height: 430px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  animation: swim 60s linear infinite;
+}
+
+#dolphin {
+  width: 80px;
+  transform: rotate(-50deg);
+}
+/* 時鐘 */
+#clock {
+  width: 400px;
+  height: 400px;
+  border: 10px #ccc solid;
+  border-radius: 50%;
+  background: rgb(255, 227, 69);
+  position: absolute;
+  box-shadow: 0px 0px 5px 2px #666;
+  transform: translate(-50%, -50%);
+  animation: move 2s ease-out infinite;
+}
+#hour {
+  width: 25%;
+  height: 10px;
+  border-radius: 2px;
+  background: rgba(0, 255, 0, 0.5);
+  position: absolute;
+  top: calc(50% - 5px);
+  left: 50%;
+  transform-origin: left center;
+  z-index: 2;
+}
+#minute {
+  width: 40%;
+  height: 10px;
+  border-radius: 2px;
+  background: #000;
+  position: absolute;
+  top: calc(50% - 5px);
+  left: 50%;
+  transform-origin: left center;
+}
+
+#second {
+  width: 45%;
+  height: 4px;
+  border-radius: 2px;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 50%;
+  transform-origin: left center;
+  box-shadow: -3px -2px 2px #888;
+  z-index: 2;
+}
+
+/* 數字時間 */
+#timeBox {
+  width: 90px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+  background: #000;
+  position: absolute;
+  left: 15%;
+  top: calc(50% - 15px);
+  z-index: 1;
+}
+
+#center {
+  width: 24px;
+  height: 24px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  left: calc(50% - 12px);
+  top: calc(50% - 12px);
+  z-index: 3;
+}
+
+#hr3 {
+  width: 30px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+}
+
+#hr6 {
+  width: 30px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 40px;
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#hr9 {
+  width: 30px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translateY(-50%);
+}
+
+#hr12 {
+  width: 60px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 35px;
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 大螢幕 */
+@media (min-width: 1600px) {
+  #clock {
+    width: 500px;
+    height: 500px;
+  }
+  .dolphin-area {
+    width: 560px;
+    height: 560px;
+  }
+
+  #dolphin {
+    width: 150px;
+  }
+
+  #year,
+  #month,
+  #day {
+    font-size: 120px;
+    margin: 0 20px;
+  }
+
+  #years,
+  #date {
+    font-size: 45px;
+  }
+}

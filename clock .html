@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>clock</title>
+</head>
+
+<body>
+  <div class="container">
+    <div id="years">
+      <div>Year</div>
+      <div id="year"></div>
+    </div>
+    <div id="date">
+      <div>
+        <div>Month</div>
+        <div id="month"></div>
+      </div>
+      <div>
+        <div>Day</div>
+        <div id="day"></div>
+      </div>
+    </div>
+  </div>
+  <div class="dolphin-area">
+    <img id="dolphin" src="./img/dolphin.gif">
+  </div>
+  <div id="clock">
+    <div id="hour"></div>
+    <div id="minute"></div>
+    <div id="second"></div>
+    <div id="center"></div>
+    <div id="timeBox"></div>
+    <div id="hr3">3</div>
+    <div id="hr6">6</div>
+    <div id="hr9">9</div>
+    <div id="hr12">12</div>
+  </div>
+
+
+
+
+  <script>
+    const year = document.getElementById('year')
+    const month = document.getElementById('month')
+    const day = document.getElementById('day')
+    const hour = document.getElementById('hour')
+    const min = document.getElementById('minute')
+    const sec = document.getElementById('second')
+    const timeBox = document.getElementById('timeBox')
+
+    const updateclock = () => {
+      const now = new Date()
+      hour.style.transform = `rotate(${30 * now.getHours() - 90}deg)`
+      min.style.transform = `rotate(${6 * now.getMinutes() - 90}deg)`
+      sec.style.transform = `rotate(${6 * now.getSeconds() - 90}deg)`
+      const h = now.getHours()
+      const m = now.getMinutes()
+      const s = now.getSeconds()
+      const y = now.getFullYear()
+      const mo = now.getMonth()
+      const d = now.getDate()
+      // 當為個位數時，前面多加個0(轉型為字串)
+      const hourStr = (h < 10) ? '0' + h : h
+      const minStr = (m < 10) ? '0' + m : m
+      const secStr = (s < 10) ? '0' + s : s
+      timeBox.innerText = `${hourStr}:${minStr}:${secStr}`
+      year.innerText = y
+      month.innerText = mo + 1
+      day.innerText = d
+    }
+    updateclock()
+    setInterval(updateclock, 1000)
+  </script>
+</body>
+
+</html>
